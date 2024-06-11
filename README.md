@@ -54,6 +54,18 @@ To begin, you need to create S3 buckets and populate them with the necessary dat
     Download the CSV files from this repository to your local machine.
 
 4. **Upload Data Files to S3**:
+
+   ```scss
+├── dags
+│   └── (archivos DAG)
+├── data_for_dims
+│   └── (archivos de datos para dimensiones)
+├── scripts
+│   └── (scripts PySpark)
+└── jars
+    └── (archivos JAR de Redshift)
+
+   ```
     ```bash
     aws s3 cp path/to/dimCustomers.csv s3://food-delivery-data-analysis/dims/
     aws s3 cp path/to/dimRestaurants.csv s3://food-delivery-data-analysis/dims/
