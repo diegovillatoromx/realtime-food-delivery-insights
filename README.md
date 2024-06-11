@@ -63,13 +63,24 @@ To begin, you need to create S3 buckets and populate them with the necessary dat
    ├── scripts
    │   └── (scripts PySpark)
    └── jars
-    └── (archivos JAR de Redshift)
+       └── (archivos JAR de Redshift)
    ```
-    ```bash
-    aws s3 cp path/to/dimCustomers.csv s3://food-delivery-data-analysis/dims/
-    aws s3 cp path/to/dimRestaurants.csv s3://food-delivery-data-analysis/dims/
-    aws s3 cp path/to/dimDeliveryRiders.csv s3://food-delivery-data-analysis/dims/
-    ```
+   ```bash
+   #!/bin/bash
+   # Subir archivos DAG a S3
+   echo "Copying DAG files to S3..."
+   aws s3 cp --recursive ./dags s3://airflow-managed-gds/dags/
+   # Subir archivos de datos para dimensiones a S3
+   echo "Copying dim data files to S3..."
+   aws s3 cp --recursive ./data_for_dims s3://food-delivery-data-analysis/dims/
+   # Subir scripts PySpark a S3
+   echo "Copying pyspark scripts to S3..."
+   aws s3 cp --recursive ./scripts s3://food-delivery-data-analysis/pyspark_script/
+   # Subir archivo JAR de Redshift a S3
+   echo "Copying redshift jar file to S3..."
+   aws s3 cp --recursive ./jars s3://food-delivery-data-analysis/redshift-connector-jar/
+   echo "Data upload complete!"
+   ```
 
 ### Data Ingestion with Kinesis
 
