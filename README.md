@@ -45,15 +45,15 @@ The dataset consists of several CSV files representing different entities in the
 To begin, you need to create S3 buckets and populate them with the necessary datasets. This can be done using AWS CLI commands.
 
 1. **Create S3 Buckets**:
-    ```bash
-    aws s3 mb s3://food-delivery-data-analysis
-    aws s3 mb s3://food-delivery-data-analysis/dims
-    ```
+   ```bash
+   aws s3api create-bucket --bucket airflow-managed-gds --region us-east-1
+   aws s3api create-bucket --bucket food-delivery-data-analysis --region us-east-1
+   ```
 
-2. **Download Data Files**:
+3. **Download Data Files**:
     Download the CSV files from this repository to your local machine.
 
-3. **Upload Data Files to S3**:
+4. **Upload Data Files to S3**:
     ```bash
     aws s3 cp path/to/dimCustomers.csv s3://food-delivery-data-analysis/dims/
     aws s3 cp path/to/dimRestaurants.csv s3://food-delivery-data-analysis/dims/
