@@ -56,14 +56,15 @@ To begin, you need to create S3 buckets and populate them with the necessary dat
    ***Directory Structure***
    Assuming you have the following directory structure:
    ```scss
+   .
    ├── dags
-   │   └── (archivos DAG)
+   │   └── (DAG files)
    ├── data_for_dims
-   │   └── (archivos de datos para dimensiones)
+   │   └── (Data files for dimensions)
    ├── scripts
-   │   └── (scripts PySpark)
+   │   └── (PySpark scripts)
    └── jars
-       └── (archivos JAR de Redshift)
+    └── (Redshift JAR files)
    ```
    ***Bash Script for Uploading Data***
    Save the following script in a file named `upload_data.sh`:
@@ -96,11 +97,10 @@ To begin, you need to create S3 buckets and populate them with the necessary dat
    - `aws s3api create-bucket --bucket airflow-managed-gds --region us-east-1`: Creates a bucket named airflow-managed-gds in the us-east-1 region.
    - `aws s3api create-bucket --bucket food-delivery-data-analysis --region us-east-1`: Creates a bucket named food-delivery-data-analysis in the us-east-1 region.
    **Upload Data:**
-
-aws s3 cp --recursive ./dags s3://airflow-managed-gds/dags/: Copies all files and directories inside ./dags to the dags folder in the airflow-managed-gds bucket.
-aws s3 cp --recursive ./data_for_dims s3://food-delivery-data-analysis/dims/: Copies all files and directories inside ./data_for_dims to the dims folder in the food-delivery-data-analysis bucket.
-aws s3 cp --recursive ./scripts s3://food-delivery-data-analysis/pyspark_script/: Copies all files and directories inside ./scripts to the pyspark_script folder in the food-delivery-data-analysis bucket.
-aws s3 cp --recursive ./jars s3://food-delivery-data-analysis/redshift-connector-jar/: Copies all files and directories inside ./jars to the redshift-connector-jar folder in the food-delivery-data-analysis bucket.
+   - `aws s3 cp --recursive ./dags s3://airflow-managed-gds/dags/`: Copies all files and directories inside ./dags to the dags folder in the airflow-managed-gds bucket.
+   - `aws s3 cp --recursive ./data_for_dims s3://food-delivery-data-analysis/dims/`: Copies all files and directories inside `./data_for_dims` to the dims folder in the food-delivery-data-analysis bucket.
+   - `aws s3 cp --recursive ./scripts s3://food-delivery-data-analysis/pyspark_script/`: Copies all files and directories inside `./scripts` to the pyspark_script folder in the food-delivery-data-analysis bucket.
+   - `aws s3 cp --recursive ./jars s3://food-delivery-data-analysis/redshift-connector-jar/`: Copies all files and directories inside `./jars` to the redshift-connector-jar folder in the food-delivery-data-analysis bucket.
 
 ### Data Ingestion with Kinesis
 
