@@ -2,15 +2,22 @@
 
 This repository contains a real-time data analysis project for a food delivery service. It leverages AWS technologies for data ingestion, processing, storage, and visualization: Airflow, Kinesis Data Streams for real-time data ingestion, Redshift as a data warehouse, Spark Streaming on EMR for real-time data processing.
 
-## Table of Contents  
+# Realtime Food Delivery Insights
 
-- [Description](#description) 
-- [Architecture](#architecture)
-- [Dataset](#Dataset)
-- [Methodology](#Methodology)
-- [Modular Code Overview](#modular-code-overview)
-- [Contribution](#contribution)
-- [Contact](#contact)
+## Table of Contents
+
+1. [Description](#description)
+2. [Architecture](#architecture)
+3. [Dataset](#dataset)
+4. [Methodology](#methodology)
+   - [Creating and Populating S3 Buckets](#creating-and-populating-s3-buckets)
+   - [Data Ingestion with Kinesis](#data-ingestion-with-kinesis)
+   - [Real-Time Processing with EMR and Spark Streaming](#real-time-processing-with-emr-and-spark-streaming)
+   - [Data Storage in Redshift](#data-storage-in-redshift)
+   - [Visualization with QuickSight](#visualization-with-quicksight)
+5. [Modular Code Overview](#modular-code-overview)
+   - [Python Simulation Script](#python-simulation-script)
+   - [Airflow DAGs](#airflow-dags)
 
 ## Description
 
