@@ -40,8 +40,6 @@ The dataset consists of several CSV files representing different entities in the
 
 ## Methodology
 
-## Methodology
-
 ### Creating and Populating S3 Buckets
 
 To begin, you need to create S3 buckets and populate them with the necessary datasets. This can be done using AWS CLI commands.
