@@ -44,17 +44,17 @@ The dataset consists of several CSV files representing different entities in the
 
 To begin, you need to create S3 buckets and populate them with the necessary datasets. This can be done using AWS CLI commands.
 
-1. **Create S3 Buckets**:
+1. **Download Data Files**:
+    Download the CSV files from this repository to your local machine.
+2. **Create S3 Buckets**:
+   Open your terminal and run the following commands to create the buckets:
    ```bash
    aws s3api create-bucket --bucket airflow-managed-gds --region us-east-1
    aws s3api create-bucket --bucket food-delivery-data-analysis --region us-east-1
    ```
-
-3. **Download Data Files**:
-    Download the CSV files from this repository to your local machine.
-
-4. **Upload Data Files to S3**:
-
+3. **Upload Data Files to S3**:
+   ***Directory Structure***
+   Assuming you have the following directory structure:
    ```scss
    ├── dags
    │   └── (archivos DAG)
@@ -65,6 +65,8 @@ To begin, you need to create S3 buckets and populate them with the necessary dat
    └── jars
        └── (archivos JAR de Redshift)
    ```
+   ***Bash Script for Uploading Data***
+   Save the following script in a file named `upload_data.sh`:
    ```bash
    #!/bin/bash
    # Subir archivos DAG a S3
@@ -81,6 +83,24 @@ To begin, you need to create S3 buckets and populate them with the necessary dat
    aws s3 cp --recursive ./jars s3://food-delivery-data-analysis/redshift-connector-jar/
    echo "Data upload complete!"
    ```
+   ***Execute the Bash Script***
+   ```sh
+   chmod +x upload_data.sh
+   ```
+   ***Run the script from your terminal:***
+   ```sh
+   ./upload_data.sh
+   ```
+   ***Explanation of Commands***
+   **Create Buckets:**
+   - `aws s3api create-bucket --bucket airflow-managed-gds --region us-east-1`: Creates a bucket named airflow-managed-gds in the us-east-1 region.
+   - `aws s3api create-bucket --bucket food-delivery-data-analysis --region us-east-1`: Creates a bucket named food-delivery-data-analysis in the us-east-1 region.
+   **Upload Data:**
+
+aws s3 cp --recursive ./dags s3://airflow-managed-gds/dags/: Copies all files and directories inside ./dags to the dags folder in the airflow-managed-gds bucket.
+aws s3 cp --recursive ./data_for_dims s3://food-delivery-data-analysis/dims/: Copies all files and directories inside ./data_for_dims to the dims folder in the food-delivery-data-analysis bucket.
+aws s3 cp --recursive ./scripts s3://food-delivery-data-analysis/pyspark_script/: Copies all files and directories inside ./scripts to the pyspark_script folder in the food-delivery-data-analysis bucket.
+aws s3 cp --recursive ./jars s3://food-delivery-data-analysis/redshift-connector-jar/: Copies all files and directories inside ./jars to the redshift-connector-jar folder in the food-delivery-data-analysis bucket.
 
 ### Data Ingestion with Kinesis
 
