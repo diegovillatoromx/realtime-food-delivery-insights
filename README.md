@@ -5,7 +5,7 @@ This repository contains a real-time data analysis project for a food delivery s
 # Realtime Food Delivery Insights  
 
 ## Table of Contents   
-  
+   
 1. [Description](#description)
 2. [Architecture](#architecture) 
 3. [Dataset](#dataset)
