@@ -7,7 +7,7 @@ This repository contains a real-time data analysis project for a food delivery s
 ## Table of Contents   
    
 1. [Description](#description)
-2. [Architecture](#architecture) 
+2. [Architecture](#architecture)
 3. [Dataset](#dataset)
 4. [Methodology](#methodology)
    - [Creating and Populating S3 Buckets](#creating-and-populating-s3-buckets)
