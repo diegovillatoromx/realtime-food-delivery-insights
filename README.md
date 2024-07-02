@@ -8,7 +8,7 @@ This repository contains a real-time data analysis project for a food delivery s
     
 1. [Description](#description)
 2. [Architecture](#architecture)
-3. [Dataset](#dataset)
+3. [Dataset](#dataset) 
 4. [Methodology](#methodology)
    - [Creating and Populating S3 Buckets](#creating-and-populating-s3-buckets)
    - [Data Ingestion with Kinesis](#data-ingestion-with-kinesis)
