@@ -1,5 +1,5 @@
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import col, from_json
+from pyspark.sql.functions import col, from_json 
 from pyspark.sql.types import StructType, StructField, IntegerType, StringType, DecimalType, TimestampType
 import argparse
 
