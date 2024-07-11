@@ -1,4 +1,4 @@
-from airflow import DAG
+from airflow import DAG 
 from airflow.models import Variable
 from airflow.providers.amazon.aws.operators.emr import EmrAddStepsOperator
 from datetime import datetime
