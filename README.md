@@ -24,7 +24,7 @@ This repository contains a real-time data analysis project for a food delivery s
 This project demonstrates a robust architecture for real-time data analysis in a food delivery service, utilizing various AWS services to simulate, ingest, process, store, and visualize data.
 
 ## Architecture
-<img src='https://github.com/diegovillatoromx/ETL-Pipeline-Spotify/blob/main/architecture_diagram_spotify.gif' alt="architecture_diagram">
+<img src='https://github.com/diegovillatoromx/realtime-food-delivery-insights/blob/main/real-time-food-delivery.gif' alt="architecture_diagram">
 
 The architecture includes the following components:
 
