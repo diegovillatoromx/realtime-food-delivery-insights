@@ -185,6 +185,48 @@ Set up Kinesis Data Streams to capture and manage real-time data streams from th
 
 ### Data Ingestion with Airflow
 
+
+In this project, we leverage Apache Airflow to manage and coordinate the ETL workflows for data ingestion. Airflow, running on AWS, orchestrates the process of extracting data from multiple sources and loading it into our data pipeline for further processing. Airflow is used to automate the creation and loading of dimension and fact tables into Amazon Redshift. This process ensures that the data is properly structured and readily available for real-time processing and analysis.
+
+#### Steps
+
+1. **Create an EMR Cluster**:
+   Before submitting the Spark job, we need to create an EMR cluster. Use the following AWS CLI command to create the cluster:
+
+    ```sh
+    aws emr create-cluster --name "Food Delivery Data Processing" \
+    --use-default-roles \
+    --release-label emr-6.4.0 \
+    --applications Name=Spark \
+    --ec2-attributes KeyName=myKey \
+    --instance-type m5.xlarge \
+    --instance-count 3 \
+    --bootstrap-actions Path=s3://my-bucket/my-bootstrap-script.sh
+    ```
+
+    Replace `myKey` with your EC2 key pair and `my-bootstrap-script.sh` with the path to any bootstrap script you may want to run.
+
+2. **Airflow DAGs**:
+   Airflow DAGs (Directed Acyclic Graphs) are used to define and manage the ETL workflows. Below is a brief overview of the DAGs used in this project:
+
+    - **`airflow_to_emr.py`**: Manages and coordinates ETL workflows by submitting a PySpark Streaming job to EMR.
+    - **`dim_load_dag.py`**: Creates and loads dimension tables into Redshift.
+
+3. **Data Processing with Spark on EMR**:
+   Once the EMR cluster is running, we can submit the Spark job. Use the following AWS CLI command to add steps to the EMR cluster:
+
+    ```sh
+    aws emr add-steps --cluster-id <your-cluster-id> --steps Type=Spark,Name="Spark Application",ActionOnFailure=CONTINUE,Args=[--deploy-mode,cluster,--num-executors,3,--executor-memory,6G,--executor-cores,3,s3://food-delivery-data-analysis/pyspark_script/pyspark_streaming.py]
+    ```
+
+    Replace `<your-cluster-id>` with the ID of your EMR cluster.
+
+4. **Integration with AWS CLI**:
+   All the services and workflows described above are managed and deployed using the AWS CLI. This ensures that the infrastructure is easily reproducible and scalable.
+
+By using Airflow in conjunction with AWS services, we can automate and streamline the data ingestion process, ensuring efficient and reliable data flow from source to Redshift and eventually to our real-time processing and visualization layers.
+
+
 ### Real-Time Processing with EMR and Spark Streaming
 
 Use EMR with Spark Streaming to process the incoming data from Kinesis Data Streams in real time.
