@@ -263,9 +263,22 @@ Airflow is used to automate the creation and loading of dimension and fact table
     ```
 
     Replace `myKey` with your EC2 key pair and `my-bootstrap-script.sh` with the path to any bootstrap script you want to run.
-
    
+4. **Airflow DAGs**:
+    Summarize the Airflow DAGs used in this project:
 
+    - **`airflow_to_emr.py`**: Manages and coordinates the ETL workflows by submitting a PySpark Streaming job to EMR.
+    - **`dim_load_dag.py`**: Creates and loads dimension tables in Redshift.
+
+5. **Data Processing with Spark on EMR**:
+    Once the EMR cluster is running, submit the Spark job. Use the following AWS CLI command to add steps to the EMR cluster:
+
+    ```sh
+    aws emr add-steps --cluster-id <your-cluster-id> --steps Type=Spark,Name="Spark Application",ActionOnFailure=CONTINUE,Args=[--deploy-mode,cluster,--num-executors,3,--executor-memory,6G,--executor-cores,3,s3://food-delivery-data-analysis/pyspark_script/pyspark_streaming.py]
+    ```
+
+8. **Integration with AWS CLI**:
+    All services and workflows described above are managed and deployed using AWS CLI, ensuring the infrastructure is easily reproducible and scalable.
 
 ### Real-Time Processing with EMR and Spark Streaming
 
