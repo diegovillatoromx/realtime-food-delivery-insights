@@ -12,6 +12,7 @@ This repository contains a real-time data analysis project for a food delivery s
 4. [Methodology](#methodology)
    - [Creating and Populating S3 Buckets](#creating-and-populating-s3-buckets)
    - [Data Ingestion with Kinesis](#data-ingestion-with-kinesis)
+   - [Data Ingestion with Airflow](#data-ingestion-with-airflow)
    - [Real-Time Processing with EMR and Spark Streaming](#real-time-processing-with-emr-and-spark-streaming)
    - [Data Storage in Redshift](#data-storage-in-redshift)
    - [Visualization with QuickSight](#visualization-with-quicksight)
@@ -181,6 +182,8 @@ Set up Kinesis Data Streams to capture and manage real-time data streams from th
       send_order_to_kinesis(stream_name, order)
       order_id += 1  # Increment OrderID for the next order
    ```
+
+### Data Ingestion with Airflow
 
 ### Real-Time Processing with EMR and Spark Streaming
 
