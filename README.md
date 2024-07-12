@@ -262,7 +262,9 @@ Airflow is used to automate the creation and loading of dimension and fact table
     --bootstrap-actions Path=s3://my-bucket/my-bootstrap-script.sh
     ```
 
-    Replace `myKey` with your EC2 key pair and `my-bootstrap-script.sh`
+    Replace `myKey` with your EC2 key pair and `my-bootstrap-script.sh` with the path to any bootstrap script you want to run.
+
+   
 
 
 ### Real-Time Processing with EMR and Spark Streaming
