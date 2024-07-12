@@ -267,7 +267,7 @@ Airflow is used to automate the creation and loading of dimension and fact table
 4. **Airflow DAGs**:
     Summarize the Airflow DAGs used in this project:
 
-    - **`airflow_to_emr.py`**: Manages and coordinates the ETL workflows by submitting a PySpark Streaming job to EMR.
+    - **[`airflow_to_emr.py`](https://github.com/diegovillatoromx/realtime-food-delivery-insights/blob/main/DataPipeline/dags/airflow_to_emr.py)**: Manages and coordinates the ETL workflows by submitting a PySpark Streaming job to EMR.
     - **`dim_load_dag.py`**: Creates and loads dimension tables in Redshift.
 
 5. **Data Processing with Spark on EMR**:
