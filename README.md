@@ -190,16 +190,11 @@ In this project, we leverage Apache Airflow to manage and coordinate the ETL wor
 
 ## Data Ingestion with Airflow
 
-In this project, we leverage Apache Airflow to manage and coordinate the ETL workflows for data ingestion. Airflow, running on AWS, orchestrates the process of extracting data from multiple sources and loading it into our data pipeline for further processing.
+In this project, we leverage Apache Airflow to manage and coordinate the ETL workflows for data ingestion. Airflow, running on AWS, orchestrates the process of extracting data from multiple sources and loading it into our data pipeline for further processing. Airflow is used to automate the creation and loading of dimension and fact tables into Amazon Redshift. This process ensures that the data is properly structured and readily available for real-time processing and analysis.
 
-### Overview
+### Steps
 
-Airflow is used to automate the creation and loading of dimension and fact tables into Amazon Redshift. This process ensures that the data is properly structured and readily available for real-time processing and analysis.
-
-#### Steps
-
-1. **Create an Execution Role for MWAA**:
-    Create an IAM role that MWAA will assume to execute your DAGs.
+1. **Create an Execution Role for MWAA** will assume to execute your DAGs.
 
     ```sh
     aws iam create-role --role-name MWAA-Execution-Role --assume-role-policy-document file://trust-policy.json
@@ -230,8 +225,7 @@ Airflow is used to automate the creation and loading of dimension and fact table
     aws iam attach-role-policy --role-name MWAA-Execution-Role --policy-arn arn:aws:iam::aws:policy/service-role/AmazonMWAAServicePolicy
     ```
 
-2. **Create the MWAA Environment**:
-    Create an MWAA environment to run your Airflow DAGs.
+2. **Create the MWAA Environment** to run your Airflow DAGs.
 
     ```sh
     aws mwaa create-environment --name airflow-managed-env \
@@ -248,8 +242,7 @@ Airflow is used to automate the creation and loading of dimension and fact table
     --network-configuration '{"SecurityGroupIds": ["sg-0123456789abcdef0"], "SubnetIds": ["subnet-0123456789abcdef0"]}'
     ```
 
-3. **Create an EMR Cluster**:
-    Create an EMR cluster to run the PySpark jobs.
+3. **Create an EMR Cluster** to run the PySpark jobs.
 
     ```sh
     aws emr create-cluster --name "Food Delivery Data Processing" \
