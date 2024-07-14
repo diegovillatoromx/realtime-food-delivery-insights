@@ -1,4 +1,4 @@
-CREATE SCHEMA food_delivery_datamart;
+CREATE SCHEMA food_delivery_datamart; 
 
 CREATE TABLE food_delivery_datamart.dimCustomers (
                 CustomerID INT PRIMARY KEY,
